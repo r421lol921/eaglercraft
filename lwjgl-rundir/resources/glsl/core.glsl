@@ -215,6 +215,12 @@ void main(){
 	color.rgb = mix(color.rgb, fogColor.xyz, clamp(i, 0.0, 1.0) * fogColor.a);
 #endif
 	
+	// PeytOtoria: pink sky tint - gently blends rose-pink into bright fog/sky-colored fragments
+	float skyBrightness = (color.r + color.g + color.b) / 3.0;
+	float pinkBlend = smoothstep(0.55, 1.0, skyBrightness) * max(0.0, color.b - color.r + 0.05) * 1.8;
+	vec3 pinkSkyHue = vec3(1.0, 0.75, 0.90);
+	color.rgb = mix(color.rgb, color.rgb * pinkSkyHue, clamp(pinkBlend, 0.0, 0.5));
+
 	fragColor = color;
 }
 
