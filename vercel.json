@@ -1,0 +1,7 @@
+{
+  "outputDirectory": "javascript",
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
+}
